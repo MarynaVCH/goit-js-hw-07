@@ -37,6 +37,12 @@ function onGalleryContainerClick(event) {
       const instance = basicLightbox.create(`<img src=${original} width="800" height="600">`);
 
       instance.show();
+
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+          instance.close();
+        }
+      });
     }
   });
 }
