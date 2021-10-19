@@ -14,7 +14,7 @@
 указываться в href ссылки. Не добавляй другие HTML теги или CSS классы кроме тех, что есть в этом
 шаблоне.
 
-<div class="gallery__item">
+<!-- <div class="gallery__item">
   <a class="gallery__link" href="large-image.jpg">
     <img
       class="gallery__image"
@@ -23,4 +23,4 @@
       alt="Image description"
     />
   </a>
-</div>
+</div> -->
