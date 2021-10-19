@@ -4,12 +4,12 @@ import { galleryItems } from './gallery-items.js';
 console.log(galleryItems);
 
 const galleryContainer = document.querySelector('.gallery');
-const galleryMarkup = createGalleryMarkup(galleryItems);
+const galleryMarkup = createGalleryMarkup();
 
 galleryContainer.insertAdjacentHTML('beforeend', galleryMarkup);
 
-function createGalleryMarkup(images) {
-  return images
+function createGalleryMarkup() {
+  return galleryItems
     .map(({ preview, original, description }) => {
       return `
     <div class="gallery__item">
@@ -25,4 +25,18 @@ function createGalleryMarkup(images) {
     `;
     })
     .join('');
+}
+
+galleryContainer.addEventListener('click', onGalleryContainerClick);
+
+function onGalleryContainerClick(event) {
+  event.preventDefault();
+
+  galleryItems.map(({ original }) => {
+    if (original === event.target.dataset.source) {
+      const instance = basicLightbox.create(`<img src=${original} width="800" height="600">`);
+
+      instance.show();
+    }
+  });
 }
