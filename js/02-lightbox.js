@@ -12,10 +12,21 @@ function createGalleryMarkup() {
   return galleryItems
     .map(({ preview, original, description }) => {
       return `
-    <a class="gallery__item" href="${preview}">
-  <img class="gallery__image" src="${original}" alt="${description}" />
+    <a class="gallery__item" href="${original}">
+  <img class="gallery__image" src="${preview}" alt="${description}" />
 </a>
       `;
     })
     .join('');
 }
+
+galleryContainer.addEventListener('click', onGalleryContainerClick);
+
+function onGalleryContainerClick(event) {
+  event.preventDefault();
+}
+
+const lightbox = new SimpleLightbox('.gallery__item', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
